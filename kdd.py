@@ -42,3 +42,6 @@ plt.title('Clustering KMeans - Comentários com Base em Correlação de Palavras
 plt.xlabel('Componente Principal 1')
 plt.ylabel('Componente Principal 2')
 plt.show()
+
+pd.DataFrame(reduced_data, columns=['PC1', 'PC2']).to_csv('pca_reduced_data.csv', index=False)
+df[['user', 'cluster']].to_csv('user_clusters.csv', index=False)
