@@ -77,4 +77,4 @@ plt.xlabel('Tópico')
 plt.ylabel('Valor de sentimento')
 plt.show()
 
-df[['user', 'sentiment', 'topic', 'comment_text']].to_csv('user_topics_sentiment.csv', index=False)
+df.to_csv('user_topics_sentiment.csv', index=False)

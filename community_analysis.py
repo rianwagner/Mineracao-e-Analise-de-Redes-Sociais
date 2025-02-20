@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import networkx as nx
-import json
 from community import community_louvain
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -10,6 +9,12 @@ import seaborn as sns
 from matplotlib.colors import ListedColormap
 
 df = pd.read_csv('user_topics_sentiment.csv')
+
+required_columns = ['likes', 'number_responses', 'sentiment', 'topic']
+for col in required_columns:
+    if col not in df.columns:
+        raise ValueError(f"Coluna faltante: {col}")
+    
 user_comments = df.groupby('user')['comment_text'].apply(
     lambda x: ' '.join(x.astype(str).fillna(''))
 ).reset_index()
